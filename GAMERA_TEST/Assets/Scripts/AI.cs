@@ -31,31 +31,52 @@ public class AI : MonoBehaviour {
 	//public float timeBeforeStartFollowing;
 	Vector3 rayDirection;
 
+	
 
-
-
-
-	public GameObject d, dd, ddd;
-
-
-
-
+	public GameObject d1, d2, d3;
+	
 	enum STATE {
 		WANDER, FOLLOW
 	}
 	STATE AI_STATE;
 
+
+
+
+	public Transform targetTransform;
+	public float movementSpeed;
+	public float rotationSpeed;
+	public NavMeshAgent nav;
+
+
+
 	private void Start() {
 		targetPositionTolerance = GetComponent<NavMeshAgent>().stoppingDistance;
+		nav = GetComponent<NavMeshAgent>();
+		nav.updateRotation = false;
 	}
 
 	void Update() {
-		d.transform.localEulerAngles = new Vector3(0, angleOfView / 2, 0);
-		dd.transform.localEulerAngles = new Vector3(0, -angleOfView / 2, 0);
+
+
+		Vector3 targetPosition = targetTransform.position;
+		Vector3 direction = targetPosition - transform.position;
+		Quaternion tarRot = Quaternion.LookRotation(direction);
+		transform.rotation = Quaternion.Lerp(transform.rotation, tarRot, rotationSpeed * Time.deltaTime);
+		transform.rotation = new Quaternion(0, transform.rotation.y, 0, transform.rotation.w);
+		if (Vector3.Distance(targetTransform.position, transform.position) > nav.stoppingDistance) {
+			nav.Move(transform.forward * movementSpeed * Time.deltaTime);
+		}
+
+
+
+
+		d1.transform.localEulerAngles = new Vector3(0, angleOfView / 2, 0);
+		d2.transform.localEulerAngles = new Vector3(0, -angleOfView / 2, 0);
 		
-		d.transform.localScale = new Vector3(0.1f, 0.1f, viewDistance);
-		dd.transform.localScale = new Vector3(0.1f, 0.1f, viewDistance);
-		ddd.transform.localScale = new Vector3(0.1f, 0.1f, viewDistance);
+		d1.transform.localScale = new Vector3(0.1f, 0.1f, viewDistance);
+		d2.transform.localScale = new Vector3(0.1f, 0.1f, viewDistance);
+		d3.transform.localScale = new Vector3(0.1f, 0.1f, viewDistance);
 
 
 
