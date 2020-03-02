@@ -1031,17 +1031,15 @@ MonoBehaviour:
   minZ: -20
   maxZ: 20
   target: {fileID: 673129678}
+  playerTransform: {fileID: 924034744}
   angleOfView: 45
   viewDistance: 5
   maxFollowDistance: 10
-  playerTransform: {fileID: 924034744}
   d1: {fileID: 687085270}
   d2: {fileID: 99872294}
   d3: {fileID: 1045285193}
-  targetTransform: {fileID: 673129678}
   movementSpeed: 5
   rotationSpeed: 50
-  nav: {fileID: 768051404}
 --- !u!195 &768051404
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1210,14 +1208,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1abfc00c0138df640b9bab59c04bc6ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickDelay: 0.05
   targetTransform: {fileID: 1437722721}
   movementSpeed: 30
   rotationSpeed: 50
-  nav: {fileID: 924034745}
   int_buttonNumber: 1
   enemyTransform: {fileID: 768051401}
-  stoppingDistanceFromEnemy: 3
-  stoppingDistanceFromTarget: 0.2
+  stoppingDistanceEnemy: 3
+  stoppingDistanceTarget: 0.2
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

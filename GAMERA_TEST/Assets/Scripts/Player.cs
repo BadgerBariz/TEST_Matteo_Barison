@@ -4,65 +4,86 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class Player : MonoBehaviour {
+
+	[Header("Click delay")]
+	public float clickDelay = (float)(0.5);
+
+	[Header("Target to follow")]
 	public Transform targetTransform;
+
+	[Header("Rot and move speed")]
 	public float movementSpeed;
 	public float rotationSpeed;
-	public NavMeshAgent nav;
 
 	[Header("Button to click to move")]
 	public int int_buttonNumber = 2;
+
+	[Header("Enemy AI")]
 	public Transform enemyTransform;
 
-	public float stoppingDistanceFromEnemy = 3;
-	public float stoppingDistanceFromTarget = 0.2f;
+	[Header("Stop distances")]
+	public float stoppingDistanceEnemy = 3;
+	public float stoppingDistanceTarget = 0.2f;
 
-
+	//NavMesh of the player
+	NavMeshAgent nav;
 	bool followEnemy = false;
-	NavMeshAgent playerNavMeshAgent;
-	
+	float enlapsedTime = 0;
+
+
 	void Start() {
 		//Get player posizion at start
 		targetTransform.position = transform.position;
-		playerNavMeshAgent = transform.GetComponent<NavMeshAgent>();
-		stoppingDistanceFromTarget = playerNavMeshAgent.stoppingDistance;
-		
-		nav = GetComponent<NavMeshAgent>();
+
+		nav = transform.GetComponent<NavMeshAgent>();
+		stoppingDistanceTarget = nav.stoppingDistance;
 		nav.updateRotation = false;
 	}
-	
-	private void Update() {
 
+
+	void Update() {
 		if (followEnemy) {
 			targetTransform.position = enemyTransform.position;
+			if (Vector3.Distance(targetTransform.position, transform.position) < nav.stoppingDistance) {
+				//attack
+			}
 		}
-		if (Input.GetMouseButton(int_buttonNumber)) {
-			//Raycast fom camera
-			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			RaycastHit hit;
 
-			//If I hit something
-			if (Physics.Raycast(ray.origin, ray.direction, out hit)) {
-				//If I hit terrain with RayCast...
-				string tag = hit.transform.gameObject.tag;
-				switch (tag) {
-					case "Terrain":
-						followEnemy = false;
-						targetTransform.position = hit.point;
-						playerNavMeshAgent.stoppingDistance = (float)(stoppingDistanceFromTarget);
-						break;
-					case "Enemy":
-						followEnemy = true;
-						playerNavMeshAgent.stoppingDistance = stoppingDistanceFromEnemy;
-						break;
+		if ((Time.time - enlapsedTime) > clickDelay) {
+			if (Input.GetMouseButton(int_buttonNumber)) {
+				enlapsedTime = Time.time;
+				//Raycast fom camera
+				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+				RaycastHit hit;
+				if (Physics.Raycast(ray.origin, ray.direction, out hit)) {
+					//hit tag
+					string tag = hit.transform.gameObject.tag;
+					switch (tag) {
+						//Hit terrain
+						case "Terrain":
+							followEnemy = false;
+							targetTransform.position = hit.point;
+							nav.stoppingDistance = (float)(stoppingDistanceTarget);
+							break;
+						//Hit enemy
+						case "Enemy":
+							followEnemy = true;
+							nav.stoppingDistance = stoppingDistanceEnemy;
+							break;
+					}
 				}
 			}
 		}
-		
-		Vector3 targetPosition = targetTransform.position;
-		Vector3 direction = targetPosition - transform.position;
-		Quaternion tarRot = Quaternion.LookRotation(direction);
-		transform.rotation = Quaternion.Lerp(transform.rotation, tarRot, rotationSpeed * Time.deltaTime);
+
+
+		//Take direction
+		Vector3 direction = targetTransform.position - transform.position;
+		//Rotate on LookRotation
+		transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), rotationSpeed * Time.deltaTime);
+		//Set X and Z rotation to zero
 		transform.rotation = new Quaternion(0, transform.rotation.y, 0, transform.rotation.w);
+
+		//If not arrived to destination --> move
 		if (Vector3.Distance(targetTransform.position, transform.position) > nav.stoppingDistance) {
 			nav.Move(transform.forward * movementSpeed * Time.deltaTime);
 		}
