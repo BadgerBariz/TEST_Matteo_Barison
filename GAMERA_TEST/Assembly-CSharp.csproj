@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{2D574D27-BDBD-0DC9-9558-82BCFADEAF58}</ProjectGuid>
+    <ProjectGuid>{69C9CF13-724A-0D8F-8AB6-CC5BA6432B40}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -62,37 +62,35 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\AI.cs" />
+    <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\LevelBuilder.cs" />
-    <Compile Include="Assets\Scripts\OLD\OLD_Perspective.cs" />
-    <Compile Include="Assets\Scripts\OLD\Sense.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>C:/Users/Matteo/Desktop/MATTEO BARISON TEST/TEST_Matteo_Barison/GAMERA_TEST/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>C:/Users/Matteo/Desktop/TEST/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>C:/Users/Matteo/Desktop/MATTEO BARISON TEST/TEST_Matteo_Barison/GAMERA_TEST/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>C:/Users/Matteo/Desktop/TEST/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/Matteo/Desktop/MATTEO BARISON TEST/TEST_Matteo_Barison/GAMERA_TEST/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/Matteo/Desktop/TEST/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Users/Matteo/Desktop/MATTEO BARISON TEST/TEST_Matteo_Barison/GAMERA_TEST/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/Users/Matteo/Desktop/TEST/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>C:/Users/Matteo/Desktop/MATTEO BARISON TEST/TEST_Matteo_Barison/GAMERA_TEST/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>C:/Users/Matteo/Desktop/TEST/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/Matteo/Desktop/MATTEO BARISON TEST/TEST_Matteo_Barison/GAMERA_TEST/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/Users/Matteo/Desktop/TEST/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>C:/Users/Matteo/Desktop/MATTEO BARISON TEST/TEST_Matteo_Barison/GAMERA_TEST/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>C:/Users/Matteo/Desktop/TEST/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/Matteo/Desktop/MATTEO BARISON TEST/TEST_Matteo_Barison/GAMERA_TEST/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/Matteo/Desktop/TEST/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/Matteo/Desktop/MATTEO BARISON TEST/TEST_Matteo_Barison/GAMERA_TEST/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/Users/Matteo/Desktop/TEST/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -619,11 +617,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="NavMeshComponentsEditor.csproj">
-      <Project>{13C96E9A-BFF7-137F-161C-96BC75FB8DAF}</Project>
+      <Project>{0B6394E2-C12B-2F0D-6A08-5EBF2BB3CD5B}</Project>
       <Name>NavMeshComponentsEditor</Name>
     </ProjectReference>
     <ProjectReference Include="NavMeshComponents.csproj">
-      <Project>{EEEDD36F-C284-EDCD-2704-0F139536C9F0}</Project>
+      <Project>{4D5C68BE-B16F-469C-DE46-EDC966105E57}</Project>
       <Name>NavMeshComponents</Name>
     </ProjectReference>
   </ItemGroup>

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class Player : MonoBehaviour {
+
 
 	[Header("Click delay")]
 	public float clickDelay = (float)(0.5);
@@ -11,12 +13,12 @@ public class Player : MonoBehaviour {
 	[Header("Target to follow")]
 	public Transform targetTransform;
 
-	[Header("Rot and move speed")]
-	public float movementSpeed;
-	public float rotationSpeed;
+	//[Header("Rot and move speed")]
+	//public float movementSpeed;
+	//public float rotationSpeed;
 
 	[Header("Button to click to move")]
-	public int int_buttonNumber = 2;
+	public int int_buttonNumber = 1;
 
 	[Header("Enemy AI")]
 	public Transform enemyTransform;
@@ -31,19 +33,16 @@ public class Player : MonoBehaviour {
 	float enlapsedTime = 0;
 
 
-	void Start() {
-		//Get player posizion at start
-		targetTransform.position = transform.position;
 
+	void Start() {
 		nav = transform.GetComponent<NavMeshAgent>();
-		stoppingDistanceTarget = nav.stoppingDistance;
-		nav.updateRotation = false;
 	}
 
 
 	void Update() {
 		if (followEnemy) {
 			targetTransform.position = enemyTransform.position;
+			nav.SetDestination(targetTransform.position);
 			if (Vector3.Distance(targetTransform.position, transform.position) < nav.stoppingDistance) {
 				//attack
 			}
@@ -52,19 +51,23 @@ public class Player : MonoBehaviour {
 		if ((Time.time - enlapsedTime) > clickDelay) {
 			if (Input.GetMouseButton(int_buttonNumber)) {
 				enlapsedTime = Time.time;
+
 				//Raycast fom camera
 				Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 				RaycastHit hit;
 				if (Physics.Raycast(ray.origin, ray.direction, out hit)) {
-					//hit tag
 					string tag = hit.transform.gameObject.tag;
 					switch (tag) {
 						//Hit terrain
 						case "Terrain":
-							followEnemy = false;
-							targetTransform.position = hit.point;
-							nav.stoppingDistance = (float)(stoppingDistanceTarget);
+							if (Vector3.Distance(hit.point, transform.position) > 1) {
+								followEnemy = false;
+								targetTransform.position = hit.point;
+								nav.SetDestination(hit.point);
+								nav.stoppingDistance = (float)(stoppingDistanceTarget);
+							}
 							break;
+
 						//Hit enemy
 						case "Enemy":
 							followEnemy = true;
@@ -72,20 +75,10 @@ public class Player : MonoBehaviour {
 							break;
 					}
 				}
+
+
+
 			}
-		}
-
-
-		//Take direction
-		Vector3 direction = targetTransform.position - transform.position;
-		//Rotate on LookRotation
-		transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(direction), rotationSpeed * Time.deltaTime);
-		//Set X and Z rotation to zero
-		transform.rotation = new Quaternion(0, transform.rotation.y, 0, transform.rotation.w);
-
-		//If not arrived to destination --> move
-		if (Vector3.Distance(targetTransform.position, transform.position) > nav.stoppingDistance) {
-			nav.Move(transform.forward * movementSpeed * Time.deltaTime);
 		}
 	}
 }
