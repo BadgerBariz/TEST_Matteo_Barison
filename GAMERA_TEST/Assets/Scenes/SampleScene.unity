@@ -320,7 +320,7 @@ Transform:
   m_GameObject: {fileID: 403125499}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -1, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 5}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 20}
   m_Children:
   - {fileID: 411491923}
   m_Father: {fileID: 1752866747}
@@ -431,7 +431,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 500464443}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -98.8, y: 0, z: 1.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 255095563}
@@ -472,11 +472,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62f438aa9f7722c4eab7a53dbe4033f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entityStats: {fileID: 11400000, guid: de45357aa2704f042b641f2e09f5506b, type: 2}
   clickDelay: 0.1
   targetTransform: {fileID: 961834025}
   int_buttonNumber: 1
   enemyTransform: {fileID: 584420903}
-  stoppingDistanceEnemy: 3
   stoppingDistanceTarget: 0.2
 --- !u!1 &584420902
 GameObject:
@@ -545,15 +545,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e901b23187459d6498ed386fdeae9718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entityStats: {fileID: 11400000, guid: 8b414fc6325c3e145a6fba94ec77980c, type: 2}
   minX: -20
   maxX: 20
   minZ: -20
   maxZ: 20
   target: {fileID: 1303236355}
   playerTransform: {fileID: 500464444}
+  stoppingDistance: 3
   angleOfView: 45
-  viewDistance: 5
-  maxFollowDistance: 7
+  viewDistance: 20
+  maxFollowDistance: 40
   d1: {fileID: 1288392369}
   d2: {fileID: 856476469}
   d3: {fileID: 403125499}
@@ -661,7 +663,7 @@ GameObject:
   - component: {fileID: 803533064}
   - component: {fileID: 803533063}
   m_Layer: 0
-  m_Name: Sphere (2)
+  m_Name: AI_Limit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -753,7 +755,7 @@ Transform:
   m_GameObject: {fileID: 856476469}
   m_LocalRotation: {x: 0, y: -0.19080901, z: 0, w: 0.9816272}
   m_LocalPosition: {x: 0, y: -1, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 5}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 20}
   m_Children:
   - {fileID: 1762848150}
   m_Father: {fileID: 1752866747}
@@ -850,6 +852,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -915,8 +918,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0.22330883, y: 0.66258013, z: -0.21722849, w: -0.681126}
-  m_LocalPosition: {x: 28.010908, y: 20.586697, z: -0.773352}
+  m_LocalRotation: {x: -0.4810876, y: -0.17468888, z: 0.09847496, w: -0.85342914}
+  m_LocalPosition: {x: -104.80315, y: 23.761375, z: -14.251381}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -935,6 +938,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navMeshSurface: {fileID: 1834299653}
+--- !u!114 &963194230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8526a9ca7a6135a40b840ebf99ba00b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 500464444}
 --- !u!1 &1125316896
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,7 +1042,7 @@ GameObject:
   - component: {fileID: 1151295409}
   - component: {fileID: 1151295408}
   m_Layer: 0
-  m_Name: Sphere (3)
+  m_Name: AI_Limit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1118,7 +1134,7 @@ Transform:
   m_GameObject: {fileID: 1288392369}
   m_LocalRotation: {x: 0, y: 0.19080901, z: 0, w: 0.9816272}
   m_LocalPosition: {x: 0, y: -1, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 5}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 20}
   m_Children:
   - {fileID: 1641644067}
   m_Father: {fileID: 1752866747}
@@ -1548,8 +1564,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834299648}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.8054, y: 4.8054, z: 4.8054}
+  m_LocalPosition: {x: -65.7, y: 0, z: 0}
+  m_LocalScale: {x: 17.597855, y: 4.8054, z: 4.8054}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -1595,7 +1611,7 @@ GameObject:
   - component: {fileID: 1985658152}
   - component: {fileID: 1985658151}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: AI_Limit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1674,7 +1690,7 @@ GameObject:
   - component: {fileID: 2119107485}
   - component: {fileID: 2119107484}
   m_Layer: 0
-  m_Name: Sphere (1)
+  m_Name: AI_Limit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

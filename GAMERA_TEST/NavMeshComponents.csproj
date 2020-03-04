@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{4D5C68BE-B16F-469C-DE46-EDC966105E57}</ProjectGuid>
+    <ProjectGuid>{EEEDD36F-C284-EDCD-2704-0F139536C9F0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>NavMeshComponents</AssemblyName>
@@ -68,10 +68,10 @@
     <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshSurface.cs" />
     <None Include="Assets\NavMeshComponents\Scripts\NavMeshComponents.asmdef" />
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/Matteo/Desktop/TEST/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/Users/Matteo/Desktop/MATTEO BARISON TEST/TEST_Matteo_Barison/GAMERA_TEST/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Users/Matteo/Desktop/TEST/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/Users/Matteo/Desktop/MATTEO BARISON TEST/TEST_Matteo_Barison/GAMERA_TEST/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
